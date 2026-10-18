@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#080a10" />
+  <meta name="description" content="PASSIBO — smarter shared journeys." />
+  <title>PASSIBO — Shared journeys, smarter cities</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="PASSIBO home">
+        <span class="brand-mark">P<span>↗</span></span>
+        <span>PASSIBO<span class="brand-dot">.</span></span>
+      </a>
+      <span class="demo-pill"><i></i> DEMO MODE</span>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span class="eyebrow-line"></span> THE SMARTER WAY TO MOVE</div>
+        <h1>Your route.<br><span>Their destination.</span></h1>
+        <p class="hero-copy">Find people travelling your way. Share the journey, not the hassle.</p>
+        <div class="hero-stats">
+          <div><strong>01</strong><span>Choose a route</span></div>
+          <div><strong>02</strong><span>Find a match</span></div>
+          <div><strong>03</strong><span>Share the ride</span></div>
+        </div>
+      </section>
+
+      <section class="mode-switch" aria-label="Choose mode">
+        <button class="mode active" data-mode="find"><span class="mode-icon">⌖</span><span><b>Find a lift</b><small>I'm going somewhere</small></span></button>
+        <button class="mode" data-mode="offer"><span class="mode-icon">↗</span><span><b>Offer a lift</b><small>I have spare seats</small></span></button>
+      </section>
+
+      <section class="panel route-panel">
+        <div class="section-heading">
+          <div><span class="section-kicker">YOUR JOURNEY</span><h2 id="form-title">Where are you headed?</h2></div>
+          <span class="route-badge">INDORE PILOT</span>
+        </div>
+
+        <div class="route-fields">
+          <label class="field">
+            <span>FROM</span>
+            <div class="field-input"><span class="pin start-pin"></span><input id="from" value="Bijalpur, Indore" autocomplete="off" /></div>
+          </label>
+          <div class="route-connector"><span></span><span></span><span></span></div>
+          <label class="field">
+            <span>TO</span>
+            <div class="field-input"><span class="pin end-pin"></span><input id="to" value="Bhawarkua, Indore" autocomplete="off" /></div>
+          </label>
+        </div>
+
+        <div class="field-grid">
+          <label class="field compact"><span>TRAVEL MODE</span>
+            <select id="vehicle"><option value="any">Any vehicle</option><option value="car">Car</option><option value="bike">Bike</option></select>
+          </label>
+          <label class="field compact"><span>LEAVING</span>
+            <select id="when"><option value="now">Leaving now</option><option value="30">Within 30 min</option><option value="60">Within 1 hour</option><option value="later">Later today</option></select>
+          </label>
+        </div>
+        <div class="field-grid offer-only hidden">
+          <label class="field compact"><span>AVAILABLE SEATS</span>
+            <select id="seats"><option>1</option><option>2</option><option>3</option><option>4</option></select>
+          </label>
+          <label class="field compact"><span>MAX DETOUR</span>
+            <select id="detour"><option value="5">5 minutes</option><option value="10" selected>10 minutes</option><option value="15">15 minutes</option></select>
+          </label>
+        </div>
+        <div class="notice"><span>ⓘ</span><span>Prototype only. No live rides, payments, or real passenger bookings are enabled.</span></div>
+        <button id="search-btn" class="primary-btn"><span id="search-label">Find route matches</span><span class="btn-arrow">↗</span></button>
+      </section>
+
+      <section class="results-section" id="results-section">
+        <div class="results-head"><div><span class="section-kicker">ROUTE INTELLIGENCE</span><h2 id="results-title">Suggested matches</h2></div><span class="match-count" id="match-count">3 DEMO MATCHES</span></div>
+        <div id="results" class="results-list"></div>
+      </section>
+
+      <section class="how-section">
+        <div class="section-heading"><div><span class="section-kicker">BUILT AROUND YOUR ROUTE</span><h2>Less empty space.<br>More shared journeys.</h2></div></div>
+        <div class="feature-grid">
+          <article class="feature"><span class="feature-icon">⌁</span><h3>Route-first</h3><p>Matches are ranked by shared direction, detour and departure time.</p></article>
+          <article class="feature"><span class="feature-icon">₹</span><h3>Clear contribution</h3><p>See an illustrative price before choosing a potential match.</p></article>
+          <article class="feature"><span class="feature-icon">⬡</span><h3>Safety by design</h3><p>Verification and trip safeguards are planned before live launch.</p></article>
+        </div>
+      </section>
+    </main>
+    <footer><span class="brand footer-brand"><span class="brand-mark">P<span>↗</span></span><span>PASSIBO<span class="brand-dot">.</span></span></span><span>Concept MVP · Indore, India</span></footer>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+  </script>
+</body>
+</html>

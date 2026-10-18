@@ -1,0 +1,10 @@
+{
+  "name": "PASSIBO \u2014 Shared Journeys",
+  "short_name": "PASSIBO",
+  "description": "Route-first ride-sharing prototype for Indore.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#080a10",
+  "theme_color": "#080a10",
+  "icons": []
+}
